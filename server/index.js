@@ -9,7 +9,7 @@ import postRoutes from './routes/posts.js';
 // initialise the app so then we can use all different methods on that app instance
 const app=express();
 
-// using express middleware to connect it to our application
+// using express middleware to connect it to our application, every route inside of the postRoutes is going to start with posts
 app.use('/posts', postRoutes);
 
 // setting up the body parser, limit controls the maximum request body size
