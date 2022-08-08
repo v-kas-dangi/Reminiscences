@@ -1,15 +1,25 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 import {Container, AppBar, Typography, Grow, Grid} from '@material-ui/core';
-
-import memories from './images/abcd.png'
+import {useDispatch} from 'react-redux';
+import memories from './images/abcd.png';
+import {getPosts} from './actions/posts'
+import Posts from './Components/Posts/posts';
+import Form from './Components/Form/form';
+import useStyles from './styles';
 
 const App= () => {
+    const classes = useStyles();
+    const dispatch = useDispatch();
+    useEffect(() =>{
+        dispatch(getPosts());
+    }, [dispatch])
+
     return (
         <Container maxwidth="lg">
-            <AppBar position="static" color="inherit">
-                <Typography variant="h2" align="center">Memories</Typography>
-                <img src={memories} alt="memories" height="60" />
+            <AppBar className={classes.appBar} position="static" color="inherit">
+                <Typography className={classes.heading} variant="h2" align="center">Memories</Typography>
+                <img className={classes.image} src={memories} alt="memories" height="60" />
             </AppBar>
             <Grow in>
                 <Container>
@@ -25,7 +35,7 @@ const App= () => {
             </Grow>
 
         </Container>
-    )
+    );
 }
 
 export default App;
