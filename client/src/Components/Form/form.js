@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
 import useStyles from './styles';
-import { TextField, Button, Typography, Paper } from '@material-ui/core';
-import FileBase from 'react-file-base64';
+import { TextField, Button, Typography, Paper } from '@mui/material';
+import FileBase64 from 'react-file-base64';
+import { useDispatch } from 'react-redux';
+import { createPost } from '../../actions/posts'; 
 
 const Form=() => {
     const [postData, setPostData]=useState({
@@ -9,8 +11,10 @@ const Form=() => {
     });
 
     const classes = useStyles();
-    const handleSubmit=()=>{
-
+    const dispatch =useDispatch();
+    const handleSubmit=(e)=>{
+        e.preventDefault();
+        dispatch(createPost(postData));
     }
     const clear=()=>{
 
@@ -20,9 +24,9 @@ const Form=() => {
             <form autoComplete='off' noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
                 <Typography variant='h6'>Create a Memory</Typography>
                 <TextField 
-                    name='creater' 
+                    name='creator' 
                     variant='outlined' 
-                    label='Creater' 
+                    label='Creator' 
                     fullWidth 
                     // The value is going to be stored in the state called postData(object) 
                     // And then each object key is going to be a specific text field
@@ -55,7 +59,7 @@ const Form=() => {
                     onChange={(e)=>setPostData({...postData, tags:e.target.value})}
                 />
                 <div className={classes.fileInput}>
-                    <FileBase 
+                    <FileBase64 
                         type='file'
                         multiple={false}
                         onDone={({base64})=>setPostData({...postData, selectedFile:base64})}

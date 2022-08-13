@@ -6,7 +6,7 @@ import ReactDOM  from 'react-dom/client';
 
 // provider is going to keep the track of the store which is that global state and that allow us to access that store from anywhere in the app
 import{Provider} from 'react-redux';
-import { createStore, applyMiddleware, compose, configureStore} from '@reduxjs/toolkit';
+import { applyMiddleware, compose, configureStore} from '@reduxjs/toolkit';
 import thunk from 'redux-thunk';
 import App from "./App";
 import reducers from './reducers'

@@ -2,6 +2,7 @@
 
 // importing PostMessage Model to take in the data and post it
 import PostMessage from "../models/postMessage.js";
+import express from 'express';
 
 
 // our find function will take time to process so it needs to await and hence we made it asynchronous
