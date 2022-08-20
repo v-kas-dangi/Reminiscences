@@ -3,6 +3,7 @@
 // importing PostMessage Model to take in the data and post it
 import PostMessage from "../models/postMessage.js";
 import express from 'express';
+import mongoose from "mongoose";
 
 
 // our find function will take time to process so it needs to await and hence we made it asynchronous
@@ -27,4 +28,18 @@ export const createPost= async(req, res)=>{
     } catch (error) {
         res.status(409).json({message:error.message});
     }
+}
+
+export const updatePost= async(req, res)=>{
+    const {id : _id} =req.params;
+    // post will request the changes from the front end. 
+    const post =req.body;
+
+    //checking if the id is valid or not
+    if (!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('No post with this id');
+    //if valid below statements will execute
+    const updatedPost = await PostMessage.findByIdAndUpdate(_id, post, {new:true});  //asynchronous action demands await. 
+
+    res.json(updatedPost);
+
 }
