@@ -5,11 +5,11 @@ import FileBase64 from 'react-file-base64';
 import { useDispatch } from 'react-redux';
 import { createPost, updatePost } from '../../actions/posts'; 
 import { useSelector } from 'react-redux';
-const Form=(currentId, setCurrentId) => {
+const Form=({currentId, setCurrentId}) => {
     const [postData, setPostData]=useState({
         creator: '', title: '', message: '', tags: '', selectedFile: ''
     });
-    const post =useSelector((state) => currentId ? state.posts.find((p) => p._id == currentId) : null);
+    const post =useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId) : null);
     const classes = useStyles();
     const dispatch =useDispatch();
 
@@ -34,7 +34,7 @@ const Form=(currentId, setCurrentId) => {
     return(
         <Paper className={classes.paper}>
             <form autoComplete='off' noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-                <Typography variant='h6'>Create a Memory</Typography>
+                <Typography variant='h6'>{currentId ? `Edit "${post.title}"` : 'Create a Memory'}</Typography>
                 <TextField 
                     name='creator' 
                     variant='outlined' 
