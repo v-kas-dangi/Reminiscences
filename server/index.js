@@ -22,7 +22,7 @@ app.use('/posts', postRoutes);
 
 
 // https://www.mongodb.com/cloud/atlas
-const CONNECTION_URL='mongodb+srv://ankit:Respanol321@@cluster0.bql3c0n.mongodb.net/?retryWrites=true&w=majority';
+const CONNECTION_URL='mongodb+srv://viki:123321@cluster0.rujdd.mongodb.net/?retryWrites=true&w=majority';
 const PORT=process.env.PORT||5000;
 // connecting url to the database using mongoose last two parameters to just avoid errors
 mongoose.connect(CONNECTION_URL, {useNewUrlParser:true, useUnifiedTopology:true })

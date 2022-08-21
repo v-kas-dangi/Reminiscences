@@ -17,7 +17,8 @@ const Post=({ post, setCurrentId }) => {
             </div>
             <div className={classes.overlay2}>
                 <Button style={{color: 'white'}} size="small" 
-                onClick={() => setCurrentId(post._id)}>  //now we are exporting this id to the form.js file as currentid.
+                //now we are exporting this id to the form.js file as currentid.
+                onClick={() => setCurrentId(post._id)}>  
                     <MoreHorizIcon fontsize="default" /> 
                 </Button>
             </div>
