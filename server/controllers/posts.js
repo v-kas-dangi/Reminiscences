@@ -1,9 +1,8 @@
 // This will contain the logic function of the routes to keep things more organised
 
 // importing PostMessage Model to take in the data and post it
-import PostMessage from "../models/postMessage.js";
-import express from 'express';
-import mongoose from "mongoose";
+import PostMessage from '../models/postMessage.js';
+import mongoose from 'mongoose';
 
 
 // our find function will take time to process so it needs to await and hence we made it asynchronous
@@ -38,7 +37,7 @@ export const updatePost= async(req, res)=>{
     //checking if the id is valid or not
     if (!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('No post with this id');
     //if valid below statements will execute
-    const updatedPost = await PostMessage.findByIdAndUpdate(_id, post, {new:true});  //asynchronous action demands await. 
+    const updatedPost = await PostMessage.findByIdAndUpdate(_id,{ ...post, _id }, {new:true});  //asynchronous action demands await. 
 
     res.json(updatedPost);
 
