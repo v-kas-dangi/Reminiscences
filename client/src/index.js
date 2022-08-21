@@ -10,6 +10,7 @@ import { applyMiddleware, compose, configureStore} from '@reduxjs/toolkit';
 import thunk from 'redux-thunk';
 import App from "./App";
 import reducers from './reducers'
+import './index.css';
 
 // const store =createStore(reducers, undefined, compose(applyMiddleware(thunk)))
 // Note: used configureStore instead of createStore if you want to use createStore comment out the 4 lines below and use the line above
