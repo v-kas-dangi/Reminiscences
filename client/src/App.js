@@ -13,14 +13,15 @@ const App= () => {
     const [currentId, setCurrentId] =useState(null);    //creating a id so that it can be passed for editing the post in the backend. At the start taking it as null. 
     const classes = useStyles();
     const dispatch = useDispatch();
+
     useEffect(() =>{
         dispatch(getPosts());
-    }, [currentId, dispatch])
+    }, [currentId, dispatch]);
 
     return (
         <Container maxwidth="lg">
-            <AppBar className={classes.appBar} position="static" color="inherit">
-                <Typography className={classes.heading} variant="h2" align="center">Memories</Typography>
+            <AppBar className={classes.appBar} position="static" color="primary">
+                <Typography className={classes.heading} variant="h2" align="center">Reminiscences</Typography>
                 <img className={classes.image} src={memories} alt="memories" height="60" />
             </AppBar>
             <Grow in>
