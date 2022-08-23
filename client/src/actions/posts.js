@@ -17,7 +17,7 @@ export const createPost =(post) => async(dispatch) =>{
         const{data} =await api.createPost(post);
         dispatch({type : 'CREATE', payload:data});
     } catch(error){
-        console.log(error);
+        console.log(error);     // Here we don't use error.message as we lose information due to it
     }
 };
 
@@ -27,5 +27,15 @@ export const updatePost = (id, post) => async(dispatch)=>{
         dispatch({type : 'UPDATE', payload:data});
     }catch(error){
         console.log(error);   // Here we don't use error.message as we lose information due to it
+    }
+}
+
+export const deletePost = (id) => async(dispatch) => {
+    try {
+        await api.deletePost(id);
+
+        dispatch({ type: 'DELETE', payload: id });
+    } catch (error) {
+        console.log(error);    // Here we don't use error.message as we lose information due to it
     }
 }
